@@ -214,12 +214,54 @@
 #     answer = i * num
 #     print(i, "x", num, "=", answer)
 
-# Challenge 040
-# Challenge 041
-# Challenge 042
-# Challenge 043
-# Challenge 044
+# # Challenge 040
+# import math
+# num = int(input("Write a number below 50: "))
+# for i in range(50, num - 1, -1):
+#     print(i)
 
+# # Challenge 041
+# import math
+# name = input("Write your name: ")
+# num = int(input("Write a number: "))
+# if num < 10:
+#     for i in range(0, num):
+#         print(name)
+# else:
+#     for i in range(0, 3):
+#         print("Too high")
+
+# # Challenge 042
+# total = 0
+# for i in range(0, 5):
+#     num = int(input("Enter a number and the computer will calculate the result: "))
+#     ans = input("Do you want this number included? (y/n) ")
+#     if ans == "y":
+#         total = total + num
+# print(total)
+
+# # Challenge 043
+# name = input("Which direction want to count (up or down)? : ")
+# if name == "up":
+#     num_top = int(input("Please, enter the top number: "))
+#     for i in range(1, num_top + 1):
+#         print(i)
+
+# elif name == "down":
+#     num_below = int(input("Please, enter a number below 20: "))
+#     for i in range(20, num_below - 1, -1):
+#         print(i)
+# else:
+#     print("I don't understand")
+
+# Challenge 044
+num = int(input("How many people do you want to invite to the party? "))
+if num < 10:
+    for i in range(0, num):
+        name = input("Please, enter the name: ")
+        print("Success!", name, "has been added to the party list!")
+else:
+    print("Too many people, sorry! The guests number should be less then 10")
 
 ### WHILE LOOP CHALLENGES ###
 
