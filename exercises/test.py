@@ -254,15 +254,98 @@
 # else:
 #     print("I don't understand")
 
-# Challenge 044
-num = int(input("How many people do you want to invite to the party? "))
-if num < 10:
-    for i in range(0, num):
-        name = input("Please, enter the name: ")
-        print("Success!", name, "has been added to the party list!")
-else:
-    print("Too many people, sorry! The guests number should be less then 10")
+# # Challenge 044
+# num = int(input("How many people do you want to invite to the party? "))
+# if num < 10:
+#     for i in range(0, num):
+#         name = input("Please, enter the name: ")
+#         print("Success!", name, "has been added to the party list!")
+# else:
+#     print("Too many people, sorry! The guests number should be less then 10")
 
 ### WHILE LOOP CHALLENGES ###
 
-# Challenge 045
+# # Challenge 045
+# total = 0
+# while total <= 50:
+#     num = int(input('Enter a number: '))
+#     total = total + num
+#     print("The total is ...", num)
+
+# # Challenge 046
+# num = 0
+# while num <= 5:
+#     num = int(input('Enter a number: '))
+# print('The last number you entered was a ', num, 'and stop the program')
+
+# # Challenge 047
+# num1 = int(input('Enter a number: '))
+# total = num1
+# again = "y"
+# while again == "y":
+#     num2 = int(input('Enter another number: '))
+#     total = total + num2
+#     again = input("Do you want enter another number? (y/n)")
+# print("The total is", total)
+
+# # Challenge 048
+# again = "y"
+# count = 0
+# while again == "y":
+#     name = input("What's your guest name? ")
+#     print(name, "has now been invited to the party!")
+#     count = count + 1
+#     again = input("Do you want to invite someonelse? (y/n) ")
+# print("Oooh! There will be", count, "happy people at the party!")
+
+# # Challenge 049
+# compnum = 50
+# num = int(input("Enter a number: "))
+# count = 1
+# while num != compnum:
+#     if num < compnum:
+#         print("Too low")
+#     else:
+#         print("Too high")
+#     count = count + 1
+#     num = int(input("Have another go: "))
+# print("Well done, mate! You took", count, "attempts!")
+
+# # Challenge 050
+# num = int(input("Enter a number between 10 and 20: "))
+
+# while num < 10 or num > 20:
+#     if num < 10:
+#         print("Too low!")
+#     else:
+#         print("Too high")
+#     num = int(input("Try again: "))
+
+# print("Thank you!")
+
+
+# Challenge 051
+"""
+Using the song “10 green bottles”, display the lines “There are [num] green bottles
+hanging on the wall, [num] green bottles hanging on the wall, and if 1 green bottle
+should accidentally fall”. Then ask the question “how many green bottles will be
+hanging on the wall?” If the user answers correctly, display the message “There will be
+[num] green bottles hanging on the wall”. If they answer incorrectly,
+display the  message “No, try again” until they get it right. When the number of green
+bottles gets  down to 0, display the message “There are no more green bottles
+hanging on the wall”.
+"""
+
+# count = 10
+# while count > 0:
+#     print("There are", count, "green bottles hanging on the wall")
+#     print(count, "green bottles hanging on the wall, and if 1 green bottle should accidentally fall.")
+#     count = count - 1
+#     answer = int(input("How many green bottles will be hanging on the wall? "))
+#     if answer == count:
+#         print("Correct! There will be ", count,
+#               "green bottles hanging on the wall.")
+#     else:
+#         while answer != count:
+#             answer = int(input("No, try again: "))
+# print("There are no more green bottles hanging on the wall.")
