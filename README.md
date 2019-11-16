@@ -1,2 +1,2 @@
-# python-exercises
-Python Exercises from the Python By Example book
+# Python Exercises
+Solutions for the challenges from the book 'Python By Example' by Nichola Lacey
