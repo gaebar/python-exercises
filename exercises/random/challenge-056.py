@@ -7,26 +7,25 @@ Ask the user to enter a number and keep entering numbers
 until they enter the number that was randomly picked.
 """
 
-# SOLUTION 1 
+# I have added a function that is reused across exercises
+import common_functions
 import random
+
 computer_choice = random.randint(1, 10)
-user_choice = int(input("Pick a number between 1 and 10: "))
-while user_choice != computer_choice:
-    print("Try again.")
-    user_choice = int(input("Pick another number: "))
-else:
-    print("Correct! Computer choice was", int(computer_choice))
+
+# to avoid the break statement, I have encapsulated the logic into a function 
+def ask_for_user_choice(computer_choice, user_choice):
+    correct = False
+    while correct == False:
+        user_choice = common_functions.get_user_input("Pick a number between 1 and 10: ")
+        if user_choice == computer_choice:
+            correct == True
+            print(f"Correct! Computer choice was {computer_choice}")
+            return
 
 
-# SOLUTION 2 - please uncomment code to run it
-# # Play around to understand more: modified the code to use the Boolean values
+def challenge_056(computer_choice):
+    user_choice = common_functions.get_user_input("Pick a number between 1 and 10: ")
+    ask_for_user_choice(computer_choice, user_choice)
 
-import random
-computer_choice = random.randint(1, 10)
-correct = False
-while correct == False:
-    user_choice = int(input("Pick a number between 1 and 10: "))
-    if user_choice == computer_choice:
-        correct == True
-        print("Correct! Computer choice was", int(computer_choice))
-        break
+challenge_056(computer_choice)

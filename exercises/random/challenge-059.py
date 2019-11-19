@@ -13,22 +13,23 @@ import random
 computer_choice = random.choice(["red", "blue", "green", "yellow", "orange"])
 print("Pick one of this colours: red, blue, green, yellow, orange")
 colour = True
+# added an associate array to avoid the repetition of elif
+messages = {
+    "red": "Nope! You are probably RED with embarrassment right now", 
+    "blue": "You are probably feeling BLUE right now",
+    "green": "I bet you are GREEN with envy",
+    "yellow" : "You are probably feeling YELLOW instead of mellow",
+    "orange" : "I bet you are ORANGE with envy"
+    }
+
 while colour == True:
     user_pick = input("Your choice: ")
-    if user_pick == computer_choice:
-        user_pick = user_pick.upper()
-        print("Well done!", user_pick, "is the right colour!")
-        colour = False
-    elif user_pick == "red":
-        print("Nope! Your probably RED with embarrassment right now")
-    elif user_pick == "blue":
-        print("Your probably felling BLUE right now")
-    elif user_pick == "green":
-        print("I bet you are GREEN with envy")
-    elif user_pick == "yellow":
-        print("Your probably feeling YELLOW instead of mellow")
-    elif user_pick == "green":
-        print("I bet you are ORANGE with envy")
-    else:
-        print(user_pick.capitalize(), "is not one of the five given colours. Try again!")
+    user_pick = user_pick.lower()
 
+    if user_pick == computer_choice:
+        print(f"Well done! {user_pick.capitalize()} is the right colour!")
+        colour = False
+    elif user_pick in messages.keys():
+        print(messages[user_pick])
+    else:
+        print(f"{user_pick.capitalize()} is not one of the five given colours. Try again!")
