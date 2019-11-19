@@ -26,7 +26,7 @@ while colour == True:
     elif user_pick == "green":
         print("I bet you are GREEN with envy")
     elif user_pick == "yellow":
-        print("Your probably felling YELLOW right now")
+        print("Your probably feeling YELLOW instead of mellow")
     elif user_pick == "green":
         print("I bet you are ORANGE with envy")
     else:
