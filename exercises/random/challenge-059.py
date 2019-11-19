@@ -20,7 +20,7 @@ while colour == True:
         print("Well done!", user_pick, "is the right colour!")
         colour = False
     elif user_pick == "red":
-        print("Nope! Your probably felling RED right now")
+        print("Nope! Your probably RED with embarrassment right now")
     elif user_pick == "blue":
         print("Your probably felling BLUE right now")
     elif user_pick == "green":
