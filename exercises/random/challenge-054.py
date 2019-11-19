@@ -18,4 +18,4 @@ else:
 if computer_choice == "h":
     print("Computer choice was head!")
 else:
-    print("computer choice was tail!")
+    print("Computer choice was tail!")
