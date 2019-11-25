@@ -15,12 +15,12 @@ print("Pick one of this colours: red, blue, green, yellow, orange")
 colour = True
 # added an associate array to avoid the repetition of elif
 messages = {
-    "red": "Nope! You are probably RED with embarrassment right now", 
+    "red": "Nope! You are probably RED with embarrassment right now",
     "blue": "You are probably feeling BLUE right now",
     "green": "I bet you are GREEN with envy",
-    "yellow" : "You are probably feeling YELLOW instead of mellow",
-    "orange" : "I bet you are ORANGE with envy"
-    }
+    "yellow": "You are probably feeling YELLOW instead of mellow",
+    "orange": "I bet you are ORANGE with envy"
+}
 
 while colour == True:
     user_pick = input("Your choice: ")
@@ -32,4 +32,5 @@ while colour == True:
     elif user_pick in messages.keys():
         print(messages[user_pick])
     else:
-        print(f"{user_pick.capitalize()} is not one of the five given colours. Try again!")
+        print(
+            f"{user_pick.capitalize()} is not one of the five given colours. Try again!")

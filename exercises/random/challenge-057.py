@@ -2,11 +2,11 @@
 
 """
 057
-Update program 056 so that it tells the user 
+Update program 056 so that it tells the user
 if they are too high or low before they pick again.
 """
 
-# Play around to understand more: added a different message if user guess doesn't match. 
+# Play around to understand more: added a different message if user guess doesn't match.
 import random
 computer_choice = random.randint(1, 10)
 correct = False
