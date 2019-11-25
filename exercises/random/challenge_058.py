@@ -7,6 +7,7 @@ to make the question (e.g. [num1] + [num2]). Ask the user to enter the answer.
 If they get it right add a point to the score. At the end of the quiz, 
 tell them how many they got correct out of five.  
 """
+import common_functions
 
 import random
 import operator
@@ -14,7 +15,7 @@ import operator
 # using dictionary to take random operators
 
 
-def randomCalc():
+def randomCalc(current_index, total_questions):
     ops = {'+': operator.add,
            '-': operator.sub,
            '*': operator.mul,
@@ -23,21 +24,22 @@ def randomCalc():
     num2 = random.randint(1, 50)
     op = random.choice(list(ops.keys()))
     answer = ops.get(op)(num1, num2)
-    print(f'What is {num1} {op} {num2}?')
-    return answer
+    message = f'Question {current_index} of {total_questions} - What is {num1} {op} {num2}? '
+    return (answer, message)
 
 
-def ask_for_user_choice():
-    answer = randomCalc()
-    guess = float(input())
+def ask_for_user_choice(current_index, total_questions):
+    (answer, message) = randomCalc(current_index, total_questions)
+    guess = float(common_functions.get_user_input(message))
     return guess == answer
 
 
 def quiz():
-    print('Welcome! This is a 5 question math quiz')
+    print('Welcome! This is a 5 questions math quiz')
     score = 0
-    for i in range(5):
-        correct = ask_for_user_choice()
+    total_questions = 5
+    for i in range(total_questions):
+        correct = ask_for_user_choice(i+1, total_questions)
         if correct:
             score += 1
             print('Correct!\n')
