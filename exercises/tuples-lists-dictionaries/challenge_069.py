@@ -7,20 +7,14 @@ Ask the user to enter one of the countries that have been shown to them and then
 the index number (i.e. position in the list) of that item in the tuple.
 """
 
-country_names = (
-    "England",
-    "Italy",
-    "Spain",
-    "France",
-    "Portugal"
-)
+country_names = ("England", "Italy", "Spain", "France", "Portugal")
 
 print(country_names)
 
 
 # Ask for user input and ensuring the user entering an integer
 def get_user_input(message):
-    while(True):
+    while True:
         user_input = input(message)
         if user_input.isnumeric():
             print("Please enter a country name:")
@@ -31,9 +25,8 @@ def get_user_input(message):
 
 
 def ask_for_user_choice():
-    while(True):
-        user_choice = get_user_input(
-            "Please enter one of the countries above: ")
+    while True:
+        user_choice = get_user_input("Please enter one of the countries above: ")
         if user_choice not in country_names:
             print("This country is not in the list, please try again:")
         else:
