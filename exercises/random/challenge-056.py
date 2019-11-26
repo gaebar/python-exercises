@@ -17,19 +17,17 @@ computer_choice = random.randint(1, 10)
 
 
 def ask_for_user_choice(computer_choice, user_choice):
-    correct = False
-    while correct == False:
+    while True:
         user_choice = common_functions.get_user_input(
-            "Pick a number between 1 and 10: ")
+            "Pick a number between 1 and 10: "
+        )
         if user_choice == computer_choice:
-            correct == True
             print(f"Correct! Computer choice was {computer_choice}")
             return
 
 
 def challenge_056(computer_choice):
-    user_choice = common_functions.get_user_input(
-        "Pick a number between 1 and 10: ")
+    user_choice = common_functions.get_user_input("Pick a number between 1 and 10: ")
     ask_for_user_choice(computer_choice, user_choice)
 
 

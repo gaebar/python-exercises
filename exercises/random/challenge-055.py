@@ -13,33 +13,33 @@ otherwise dispaly "You lose".
 
 import random
 import common_functions
-random_num = random.randint(1, 5)
+
+random_number = random.randint(1, 5)
 
 
-def check_correct_answer(random_num, user_num):
-    if random_num == user_num:
+def check_correct_answer(random_number, user_number):
+    if random_number == user_number:
         print("Correct!")
     else:
         print("Sorry, you lose.")
 
 
-def check_answer(message, random_num, user_num):
-    user_num = common_functions.get_user_input(message)
-    check_correct_answer(random_num, user_num)
+def check_answer(message, random_number, user_number):
+    user_number = common_functions.get_user_input(message)
+    check_correct_answer(random_number, user_number)
 
 
 def challenge_055():
-    user_num = common_functions.get_user_input(
-        "Pick a number between 1 and 5: ")
-    if random_num == user_num:
+    user_number = common_functions.get_user_input("Pick a number between 1 and 5: ")
+    if random_number == user_number:
         print("Well done!")
-    elif random_num < user_num:
-        check_answer("Too high! Pick another number: ", random_num, user_num)
-    elif random_num > user_num:
-        check_answer("Too low! Pick another number: ", random_num, user_num)
+    elif random_number < user_number:
+        check_answer("Too high! Pick another number: ", random_number, user_number)
+    elif random_number > user_number:
+        check_answer("Too low! Pick another number: ", random_number, user_number)
 
     # Display computer choice
-    print(f"Computer choice was {random_num}")
+    print(f"Computer choice was {random_number}")
 
 
 challenge_055()
