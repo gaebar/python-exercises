@@ -15,8 +15,7 @@ def get_user_input_float(message):
 
         if is_float(user_input):
             return float(user_input)
-        else:
-            print("Oops! That was not a valid number. Try again...")
+        print("Oops! That was not a valid number. Try again...")
 
 
 # Check if the input string is a float
