@@ -12,16 +12,13 @@ country_names = ("England", "Italy", "Spain", "France", "Portugal")
 print(country_names)
 
 
-# Ask for user input and ensuring the user entering an integer
+# Ask for user input and ensures the user enters an integer
 def get_user_input(message):
     while True:
         user_input = input(message)
-        if user_input.isnumeric():
-            print("Please enter a country name:")
-        elif len(user_input) <= 2:
-            print("Please enter at least three caracters.")
-        else:
-            return user_input
+        if len(user_input) == 0:
+            print("Please enter a country name.")
+        return user_input
 
 
 def ask_for_user_choice():
@@ -29,8 +26,7 @@ def ask_for_user_choice():
         user_choice = get_user_input("Please enter one of the countries above: ")
         if user_choice not in country_names:
             print("This country is not in the list, please try again:")
-        else:
-            return user_choice
+        return user_choice
 
 
 def print_msg(user_choice, country_name):
@@ -42,4 +38,6 @@ def main():
     print_msg(user_choice, user_choice)
 
 
-main()
+if __name__ == "__main__":
+    main()
+
