@@ -29,13 +29,13 @@ def ask_for_user_choice():
         return user_choice
 
 
-def print_msg(user_choice, country_name):
+def print_message(user_choice, country_name):
     print(f"{user_choice} has index number {country_names.index(user_choice)}")
 
 
 def main():
     user_choice = ask_for_user_choice()
-    print_msg(user_choice, user_choice)
+    print_message(user_choice, user_choice)
 
 
 if __name__ == "__main__":
