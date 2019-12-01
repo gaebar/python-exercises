@@ -5,10 +5,23 @@
 70: Add to program 069 to ask the user a number and display the country in that position.
 """
 
-country_names = ("England", "Italy", "Spain", "France", "Portugal", "Germany")
+country_names = (
+    "England",
+    "Italy",
+    "Spain",
+    "France",
+    "Portugal",
+    "Germany",
+    "Ukraine",
+    "USA",
+    "Norway",
+    "Sweden",
+    "Austria",
+    "Japan",
+    "China",
+)
 
 print(", ".join(country_names))
-
 
 # Ask for user input and ensures the user enters an integer
 def get_user_input_digit(message):
@@ -16,7 +29,8 @@ def get_user_input_digit(message):
         user_input = input(message)
         if not user_input.isdigit():
             print("Oops! That was not a valid number. Try again...")
-        return int(user_input)
+        else:
+            return int(user_input)
 
 
 def ask_for_country_by_index():
@@ -27,7 +41,8 @@ def ask_for_country_by_index():
         )
         if user_index_choice > max_index:
             print("This number is too high")
-        return (user_index_choice, country_names[user_index_choice])
+        else:
+            return (user_index_choice, country_names[user_index_choice])
 
 
 def print_message(user_index, user_country):
