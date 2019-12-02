@@ -28,7 +28,7 @@ def get_user_input_integer(message):
 def ask_for_user_foods():
     food_dictionary = {}
     food_dictionary[1] = get_user_input("What's your first food item? ")
-    food_dictionary[2] = get_user_input("what's your second food item? ")
+    food_dictionary[2] = get_user_input("What's your second food item? ")
     food_dictionary[3] = get_user_input("What's your third food item? ")
     food_dictionary[4] = get_user_input("What's your fourth food item? ")
     return food_dictionary
