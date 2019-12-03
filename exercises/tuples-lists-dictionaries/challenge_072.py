@@ -39,7 +39,6 @@ def ask_user_input():
             subject_to_delete = subjects_list[index_to_delete]
 
             del subjects_list[index_to_delete]
-            del subjects_list_lowercase[index_to_delete]
 
             print(f"{subject_to_delete} is not in the subjects list anymore.")
             print(f"New subjects list: {join_subjects(subjects_list)}")
