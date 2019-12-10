@@ -7,7 +7,8 @@ and an end number between 5 and 9. Display the list for those colours between
 the start and end numbers the user input.
 """
 
-import common_functions
+# note: check for Python local input
+from exercises.tuples_lists_dictionaries import common_functions
 
 colours = [
     "red",
@@ -24,7 +25,6 @@ colours = [
 
 
 def get_check_input(start, end):
-
     outside_range_message = "The number is outside the given range. Try again"
     starting_number_message = f"Enter a starting number ({start}-{end}): "
 
@@ -37,7 +37,6 @@ def get_check_input(start, end):
 
 
 def ask_for_user_input():
-
     start = get_check_input(0, 4)
     end = get_check_input(5, 9)
 
@@ -45,10 +44,10 @@ def ask_for_user_input():
 
 
 def challenge_74(colours):
-
     (start, end) = ask_for_user_input()
     trimmed_colours = colours[start:end]
     print(", ".join(trimmed_colours))
 
 
-challenge_74(colours)
+if __name__ == "__main__":
+    challenge_74(colours)
