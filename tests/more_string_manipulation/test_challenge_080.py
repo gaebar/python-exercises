@@ -1,5 +1,4 @@
 # MORE STRING MANIPULATION
-
 from exercises.more_string_manipulation import challenge_080
 
 
@@ -21,4 +20,3 @@ def test_processing():
     assert length_user_last_name == 4
     assert length_full_name == 10
     assert full_name == "Marco Barr"
-
