@@ -10,7 +10,9 @@ Finally, display the length of their full name (including the space).
 
 
 def processing(first_name, last_name):
-    full_name = first_name + " " + last_name
+    # full_name = first_name + " " + last_name
+    full_name = f"{first_name} {last_name}"
+
     length_first_name = len(first_name)
     length_surname = len(last_name)
     length_full_name = len(full_name)
