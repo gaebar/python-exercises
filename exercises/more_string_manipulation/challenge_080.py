@@ -10,32 +10,28 @@ Finally, display the length of their full name (including the space).
 
 
 def processing(first_name, last_name):
-    # full_name = first_name + " " + last_name
     full_name = f"{first_name} {last_name}"
+    return full_name
 
-    length_first_name = len(first_name)
-    length_surname = len(last_name)
-    length_full_name = len(full_name)
-    return length_first_name, length_surname, length_full_name, full_name
+
+def length_of(user_input):
+    return len(user_input)
 
 
 def display_length_name():
-    # INPUT
     user_first_name = input("Please, enter your name: ")
+    user_first_name_length = length_of(user_first_name)
+    print(f"Your name has {user_first_name_length} characters in it.")
+
     user_last_name = input("Enter your last name: ")
+    user_last_name_length = length_of(user_last_name)
+    print(f"Your surname has {user_last_name_length} characters in it.")
 
-    # PROCESSING
-    (
-        length_user_first_name,
-        length_user_last_name,
-        length_full_name,
-        full_name,
-    ) = processing(user_first_name, user_last_name)
-
-    # OUTPUT
-    print(f"Your name has {length_user_first_name} characters in it.")
-    print(f"Your surname has {length_user_last_name} characters in it.")
-    print(f"Your full name is {full_name} and has {length_full_name} characters in it.")
+    full_name = processing(user_first_name, user_last_name)
+    user_full_name_length = length_of(full_name)
+    print(
+        f"Your full name is {full_name} and has {user_full_name_length} characters in it."
+    )
 
 
 if __name__ == "__main__":
