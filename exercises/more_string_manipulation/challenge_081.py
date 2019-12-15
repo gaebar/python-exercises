@@ -10,7 +10,7 @@ Display it with "-" after each letter, e.g S-p-a-n-i-s-h-.
 def processing(subject):
     # PROCESSING
     letters = list(subject)
-    joined_subject = "-".join(letters) + "-"
+    joined_subject = f"{'-'.join(letters)}-"
 
     return joined_subject
 
