@@ -8,7 +8,6 @@ Display it with "-" after each letter, e.g S-p-a-n-i-s-h-.
 
 
 def processing(subject):
-    # PROCESSING
     letters = list(subject)
     joined_subject = f"{'-'.join(letters)}-"
 
@@ -16,7 +15,6 @@ def processing(subject):
 
 
 def favourite_subject():
-    # INPUT
     subject = input("Enter your favourire school subject: ")
     result = processing(subject)
     print(result)
