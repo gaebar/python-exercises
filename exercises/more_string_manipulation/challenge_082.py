@@ -13,15 +13,12 @@ def trim_characters(poem, start, end):
 
 
 def display_line():
-    # INPUT
     poem = "Oh, I wish I'd looked after me teeth,"
     start = int(input("Enter a starting number: "))
     end = int(input("Enter an ending number: "))
 
-    # PROCESSING
     trimmed_poem = trim_characters(poem, start, end)
 
-    # OUTPUT
     print(trimmed_poem)
 
 
