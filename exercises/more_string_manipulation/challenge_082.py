@@ -28,11 +28,3 @@ def display_line():
 if __name__ == "__main__":
     display_line()
 
-
-# ORIGINAL WORKING CODE:
-# poem = "Oh, I wish I'd looked after me teeth,"
-# print(poem)
-
-# start = int(input("Enter a starting number: "))
-# end = int(input("Enter an ending number: "))
-# print(poem[start:end])
