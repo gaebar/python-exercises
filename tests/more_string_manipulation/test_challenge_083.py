@@ -6,8 +6,8 @@ from exercises.more_string_manipulation import challenge_083
 
 
 def test_check_if_uppercase():
-    message = "Great!"
+    message = "GREAT"
 
-    uppercase = challenge_083.check_if_uppercase(message)
+    is_uppercase = challenge_083.check_if_uppercase(message)
 
-    assert message == "Great!"
+    assert is_uppercase == True
