@@ -14,18 +14,21 @@ def check_if_uppercase(message):
         return False
 
 
-def prompt_for_user_message():
+# def prompt_for_user_message():
+def run():
     enter_message_string = "Enter a message in uppercase: "
-    try_again = False
-    while try_again == False:
+    should_stop = False
+    # while should_stop == False:
+    while not should_stop:
         message = input(enter_message_string)
         if check_if_uppercase(message):
             print("Thank you!")
-            try_again = True
+            should_stop = True
         else:
             print("Please, try again")
-            message = input(enter_message_string)
+            # message = input(enter_message_string)
 
 
 if __name__ == "__main__":
-    prompt_for_user_message()
+    run()
+    # prompt_for_user_message()
