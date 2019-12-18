@@ -52,7 +52,7 @@ def remove_unwanted_food(food_dictionary):
             del food_dictionary[user_input]
             return food_dictionary
         else:
-            print("This integer is not in the list")
+            print("That food is not a valid choice")
 
 
 def processing(food_dictionary):
