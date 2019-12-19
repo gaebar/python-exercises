@@ -7,11 +7,11 @@ from exercises.more_string_manipulation import challenge_083
 
 testdata = [
     ("GREAT", True),
-    ("is not great", False),
+    ("it's not great", False),
     ("GreAt", False),
     ("568045", False),
     ("5WER045", True),
-    ("IS NOT GREAT", True),
+    ("IT'S NOT GREAT", True),
     ("", False),
 ]
 
