@@ -11,8 +11,8 @@ testdata_fails = [
     ("All the world's a stage", "hey", "j", TypeError),
     ("", "hey", 2, TypeError),
     ("Poem", 19, 23, IndexError),
+    ("Another poem", -2, -67, TypeError)
 ]
-
 
 
 @pytest.mark.parametrize("poem, start, end, expected", testdata)

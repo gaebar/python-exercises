@@ -13,8 +13,11 @@ def trim_characters(poem, start, end):
         raise IndexError("list index out of range")
 
     if isinstance(start, int) and isinstance(end, int):
-        user_line_choose = poem[start:end]
-        return user_line_choose
+        if start > 0 and end >= start:
+            user_line_choose = poem[start:end]
+            return user_line_choose
+        else:
+            raise TypeError("Input indexes are out of range")
     else:
         raise TypeError("Input indexes are not numeric")
 
