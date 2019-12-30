@@ -9,6 +9,7 @@ and ending point. Display the characters between those two points.
 
 def trim_characters(poem, start, end):
     length_poem = len(poem)
+
     if length_poem < start:
         raise IndexError("list index out of range")
 
@@ -17,7 +18,7 @@ def trim_characters(poem, start, end):
             user_line_choose = poem[start:end]
             return user_line_choose
         else:
-            raise TypeError("Input indexes are out of range")
+            raise IndexError("Input indexes are out of range")
     else:
         raise TypeError("Input indexes are not numeric")
 
