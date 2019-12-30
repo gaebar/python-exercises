@@ -32,13 +32,25 @@ def get_user_input_integer(message):
         print("Oops! That was not a valid number. Try again...")
 
 
+## implementation using the for loop index
+# def ask_for_user_foods():
+#     food_dictionary = {}
+
+#     index = 0
+#     for food in food_prompts:
+#         food_dictionary[index] = get_user_input(food)
+#         index += 1
+
+#     return food_dictionary
+
+## implementation using the enumerate built in function
+
+
 def ask_for_user_foods():
     food_dictionary = {}
 
-    index = 0
-    for food in food_prompts:
-        food_dictionary[index] = get_user_input(food)
-        index += 1
+    for counter, food_item_prompt in enumerate(food_prompts, 1):
+        food_dictionary[counter] = get_user_input(food_item_prompt)
 
     return food_dictionary
 
@@ -46,7 +58,7 @@ def ask_for_user_foods():
 def remove_unwanted_food(food_dictionary):
     while True:
         user_input = get_user_input_integer(
-            "What's the food you would like to remove? "
+            "What's the number of the food you would like to remove? "
         )
         if user_input in food_dictionary:
             del food_dictionary[user_input]
@@ -57,7 +69,13 @@ def remove_unwanted_food(food_dictionary):
 
 def processing(food_dictionary):
     removed_food_dictionary = remove_unwanted_food(food_dictionary)
-    return sorted(removed_food_dictionary.values())
+    sorted_values = sorted(removed_food_dictionary.values())
+
+    food_dictionary_sorted = {}
+    for counter, food_item in enumerate(sorted_values, 1):
+        food_dictionary_sorted[counter] = food_item
+
+    return food_dictionary_sorted
 
 
 def challenge_73():
@@ -70,5 +88,3 @@ def challenge_73():
 
 if __name__ == "__main__":
     challenge_73()
-
-# https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
