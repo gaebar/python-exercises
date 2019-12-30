@@ -63,19 +63,21 @@ def remove_unwanted_food(food_dictionary):
         if user_input in food_dictionary:
             del food_dictionary[user_input]
             return food_dictionary
-        else:
-            print("That food is not a valid choice")
+
+        print("That food is not a valid choice")
 
 
 def processing(food_dictionary):
     removed_food_dictionary = remove_unwanted_food(food_dictionary)
     sorted_values = sorted(removed_food_dictionary.values())
 
-    food_dictionary_sorted = {}
-    for counter, food_item in enumerate(sorted_values, 1):
-        food_dictionary_sorted[counter] = food_item
+    #   Code using for loop
+    #   food_dictionary_sorted = {}
+    #   for counter, food_item in enumerate(sorted_values, 1):
+    #       food_dictionary_sorted[counter] = food_item
+    #   return food_dictionary_sorted
 
-    return food_dictionary_sorted
+    return {counter: food_item for counter, food_item in enumerate(sorted_values, 1)}
 
 
 def challenge_73():
