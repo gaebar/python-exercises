@@ -1,4 +1,4 @@
-from exercises.more_string_manipulation import new_challenge_080
+from exercises.more_string_manipulation import challenge_080_02
 
 
 def test_processing():
@@ -7,7 +7,7 @@ def test_processing():
     test_last_name = "Barr"
 
     # invoke function with the test inputs
-    full_name = new_challenge_080.processing(test_first_name, test_last_name)
+    full_name = challenge_080_02.processing(test_first_name, test_last_name)
 
     # verify that function output is as expected
     assert full_name == "Marco Barr"
@@ -15,5 +15,5 @@ def test_processing():
 
 def test_length_of():
     name = "Richard"
-    output = new_challenge_080.length_of(name)
+    output = challenge_080_02.length_of(name)
     assert output == len(name)
