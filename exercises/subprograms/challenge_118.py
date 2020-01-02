@@ -1,4 +1,5 @@
-"""Define a subprogram that will ask the user to  enter a number and 
+"""
+Define a subprogram that will ask the user to  enter a number and 
 save it as the variable  “num”. Define another subprogram that will  use “num” and count 
 from 1 to that number. 
 """
@@ -10,10 +11,8 @@ def ask_for_number():
 
 
 def count_number(num):
-    count = 1
-    while count <= num:
+    for count in range(1, num + 1):
         print(count)
-        count += 1
 
 
 def challenge_118():
