@@ -13,37 +13,55 @@ too high and asking them to guess again until they guess correctly.
 """
 
 import random
+import common_functions
 
 
-def user_pick():
-    num_low = int(input("Please, enter a low number: "))
-    num_high = int(input("Please, enter a high number: "))
-    comp_num = random.randrange(num_low, num_high)
-    return comp_num
+def ask_for_user_numbers():
+    while True:
+        num_low = common_functions.get_user_input_integer(
+            "Please, enter the minimum number: "
+        )
+        num_high = common_functions.get_user_input_integer(
+            "Please, enter the maximum number: "
+        )
+
+        if num_low < num_high:
+            comp_num = random.randrange(num_low, num_high)
+            return comp_num
+
+        print(
+            "Please ensure that the minimum number is smaller than the maximum number"
+        )
 
 
-def given_instructions():
+def prompt_for_guess():
     print("\nI am thinking of a number… ")
-    guess = int(input("Please, enter the number I'm thinking of: "))
+    guess = common_functions.get_user_input_integer(
+        "Please, enter the number I'm thinking of: "
+    )
     return guess
 
 
-def check_user_choice(comp_num, guess):
-    try_again = True
-    while try_again == True:
-        if comp_num == guess:
-            print("Correct, you win")
-            try_again = False
-        elif comp_num > guess:
-            guess = int(input("Please, enter a low number: "))
+def check_user_choice(computer_choice, user_guess):
+    while True:
+        if computer_choice == user_guess:
+            print("Correct, you win!")
+            return
+
+        if user_guess > computer_choice:
+            user_guess = common_functions.get_user_input_integer(
+                "Please, enter a lower number: "
+            )
         else:
-            guess = int(input("Please, enter a high number: "))
+            user_guess = common_functions.get_user_input_integer(
+                "Please, enter a higher number: "
+            )
 
 
 def challenge_119():
-    comp_num = user_pick()
-    guess = given_instructions()
-    check_user_choice(comp_num, guess)
+    computer_choice = ask_for_user_numbers()
+    user_guess = prompt_for_guess()
+    check_user_choice(computer_choice, user_guess)
 
 
 if __name__ == "__main__":
