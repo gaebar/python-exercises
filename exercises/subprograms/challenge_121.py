@@ -10,7 +10,7 @@ delete a name or view all the names, they should see the menu again without havi
 to restart the program. The program should be made as easy to use as possible.
 
 """
-
+# used sys to terminate the progran execution
 import sys
 
 
@@ -30,6 +30,18 @@ def get_user_input_string(message):
         print("Oops! That was not an empty string. Try again...")
 
 
+def ask_for_option_within_list(names_list):
+    while True:
+        display_list(names_list)
+        selected_index = get_user_input_integer(
+            "Enter the number of the name you want to change: "
+        )
+        if 0 < selected_index <= len(names_list):
+            return selected_index - 1
+
+        print("Oops! Please select a number within the list. Try again...")
+
+
 def display_list(names_list):
     print("Here's the current list:")
     # Enumerate allows to loop through the elements of the list.
@@ -42,16 +54,13 @@ def add_name(names_list, name):
     return names_list
 
 
-def change_name(names_list, select_num):
-    name = get_user_input_string("Enter new name: ")
-    names_list[select_num] = name
+def change_name(names_list, selected_index, new_name):
+    names_list[selected_index] = new_name
     return names_list
 
 
-def delete_name(names_list):
-    display_list(names_list)
-    select_num = int(input("Enter the number of the name you want to delete: "))
-    del names_list[select_num]
+def delete_name(names_list, selected_index):
+    del names_list[selected_index]
     return names_list
 
 
@@ -80,15 +89,14 @@ def challenge_121():
         user_choice = input("What do you want to do? ")
         if user_choice == "1":
             name = get_user_input_string("Enter a new name: ")
-            names = add_name(names_list, name)
+            names_list = add_name(names_list, name)
         elif user_choice == "2":
-            display_list(names_list)
-            select_num = get_user_input_integer(
-                "Enter the number of the name you want to change: "
-            )
-            names = change_name(names_list, select_num)
+            selected_index = ask_for_option_within_list(names_list)
+            new_name = get_user_input_string("Enter new name: ")
+            names_list = change_name(names_list, selected_index, new_name)
         elif user_choice == "3":
-            names = delete_name(names_list)
+            selected_index = ask_for_option_within_list(names_list)
+            names_list = delete_name(names_list, selected_index)
         elif user_choice == "4":
             view_names(names_list)
         elif user_choice == "5":
