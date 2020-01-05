@@ -11,69 +11,75 @@ to restart the program. The program should be made as easy to use as possible.
 
 """
 
+import sys
 
-def add_name():
+
+def add_name(names_list):
     name = input("Enter a new name: ")
-    names.append(name)
-    return names
+    names_list.append(name)
+    return names_list
 
 
-def change_name():
+def change_name(names_list):
     num = 0
-    for x in names:
+    for x in names_list:
         print(num, x)
         num = num + 1
     select_num = int(input("Enter the number of the name you want to change: "))
     name = input("Enter new name: ")
-    names[select_num] = name
-    return names
+    names_list[select_num] = name
+    return names_list
 
 
-def delete_name():
+def delete_name(names_list):
     num = 0
-    for x in names:
+    for x in names_list:
         print(num, x)
         num = num + 1
     select_num = int(input("Enter the number of the name you want to delete: "))
-    del names[select_num]
-    return names
+    del names_list[select_num]
+    return names_list
 
 
-def view_names():
-    for x in names:
-        print(x)
-    print()
+def view_names(names_list):
+    if len(names_list) == 0:  # Check if list is empty
+        print("The list is empty")
+    else:
+        print("Here are the items in the list:")
+        for x in names_list:
+            print(f" - {x}")
+        print()
 
 
 def challenge_121():
-    repeat = "y"
-    while repeat == "y":
+    names_list = []
+
+    while True:
         print(
             """
+            Please select one of the following options:
             1) Add a name
             2) Change a name
             3) Delete a name
             4) View names
-            5) Quit
+            5) Quit program
             """
         )
-        selection = int(input("What do you want to do? "))
-        if selection == 1:
-            names = add_name()
-        elif selection == 2:
-            names = change_name()
-        elif selection == 3:
-            names = delete_name()
-        elif selection == 4:
-            names = view_names()
-        elif selection == 5:
-            repeat = "n"
+
+        user_choice = input("What do you want to do? ")
+        if user_choice == "1":
+            names = add_name(names_list)
+        elif user_choice == "2":
+            names = change_name(names_list)
+        elif user_choice == "3":
+            names = delete_name(names_list)
+        elif user_choice == "4":
+            view_names(names_list)
+        elif user_choice == "5":
+            sys.exit()  # terminate program
         else:
-            print("Incorrect option: ")
-        data = (names, repeat)
+            print("Incorrect option, please try again: ")
 
-
-names = []
 
 if __name__ == "__main__":
     challenge_121()
