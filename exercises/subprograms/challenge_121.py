@@ -14,28 +14,42 @@ to restart the program. The program should be made as easy to use as possible.
 import sys
 
 
-def add_name(names_list):
-    name = input("Enter a new name: ")
+def get_user_input_integer(message):
+    while True:
+        user_input = input(message)
+        if user_input.isdigit():
+            return int(user_input)
+        print("Oops! That was not a valid number. Try again...")
+
+
+def get_user_input_string(message):
+    while True:
+        user_input = input(message)
+        if len(user_input) > 0:
+            return user_input
+        print("Oops! That was not an empty string. Try again...")
+
+
+def display_list(names_list):
+    print("Here's the current list:")
+    # Enumerate allows to loop through the elements of the list.
+    for counter, name in enumerate(names_list, 1):
+        print(f"{counter}) {name}")
+
+
+def add_name(names_list, name):
     names_list.append(name)
     return names_list
 
 
-def change_name(names_list):
-    num = 0
-    for x in names_list:
-        print(num, x)
-        num = num + 1
-    select_num = int(input("Enter the number of the name you want to change: "))
-    name = input("Enter new name: ")
+def change_name(names_list, select_num):
+    name = get_user_input_string("Enter new name: ")
     names_list[select_num] = name
     return names_list
 
 
 def delete_name(names_list):
-    num = 0
-    for x in names_list:
-        print(num, x)
-        num = num + 1
+    display_list(names_list)
     select_num = int(input("Enter the number of the name you want to delete: "))
     del names_list[select_num]
     return names_list
@@ -45,10 +59,7 @@ def view_names(names_list):
     if len(names_list) == 0:  # Check if list is empty
         print("The list is empty")
     else:
-        print("Here are the items in the list:")
-        for x in names_list:
-            print(f" - {x}")
-        print()
+        display_list(names_list)
 
 
 def challenge_121():
@@ -68,14 +79,20 @@ def challenge_121():
 
         user_choice = input("What do you want to do? ")
         if user_choice == "1":
-            names = add_name(names_list)
+            name = get_user_input_string("Enter a new name: ")
+            names = add_name(names_list, name)
         elif user_choice == "2":
-            names = change_name(names_list)
+            display_list(names_list)
+            select_num = get_user_input_integer(
+                "Enter the number of the name you want to change: "
+            )
+            names = change_name(names_list, select_num)
         elif user_choice == "3":
             names = delete_name(names_list)
         elif user_choice == "4":
             view_names(names_list)
         elif user_choice == "5":
+            print("Exiting program...")
             sys.exit()  # terminate program
         else:
             print("Incorrect option, please try again: ")
@@ -84,8 +101,3 @@ def challenge_121():
 if __name__ == "__main__":
     challenge_121()
 
-""" gestire un numero che non esiste, useresti un if?
-tipo: if select_num > names:
-    print ("The number you entered is not in the index")
-
-"""
