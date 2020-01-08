@@ -42,6 +42,20 @@ def ask_for_option_within_list(names_list):
         print("Oops! Please select a number within the list. Try again...")
 
 
+def handle_operations(names_list, operation):
+    if len(names_list) == 0:
+        print("The list is empty, you can't perform this operation")
+        return
+
+    selected_index = ask_for_option_within_list(names_list)
+
+    if operation == "DELETE_NAME":
+        names_list = delete_name(names_list, selected_index)
+    elif operation == "CHANGE_NAME":
+        new_name = get_user_input_string("Enter a new name: ")
+        names_list = change_name(names_list, selected_index, new_name)
+
+
 def display_list(names_list):
     print("Here's the current list:")
     # Enumerate allows to loop through the elements of the list.
@@ -91,12 +105,9 @@ def challenge_121():
             name = get_user_input_string("Enter a new name: ")
             names_list = add_name(names_list, name)
         elif user_choice == "2":
-            selected_index = ask_for_option_within_list(names_list)
-            new_name = get_user_input_string("Enter new name: ")
-            names_list = change_name(names_list, selected_index, new_name)
+            handle_operations(names_list, "CHANGE_NAME")
         elif user_choice == "3":
-            selected_index = ask_for_option_within_list(names_list)
-            names_list = delete_name(names_list, selected_index)
+            handle_operations(names_list, "DELETE_NAME")
         elif user_choice == "4":
             view_names(names_list)
         elif user_choice == "5":
