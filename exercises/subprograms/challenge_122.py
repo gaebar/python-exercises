@@ -3,7 +3,6 @@ Create the following menu:
 1) Add to file
 2) View all records
 3) Quit program
-
 Enter the number of your selection:
 
 If the user selects 1, allow them to add to a file called Salaries.csv which will
@@ -20,11 +19,38 @@ option 3.
 import csv
 import sys
 
+# import pandas as pd
+
+
+# def get_user_input_integer(message):
+#     while True:
+#         user_input = input(message)
+#         if user_input.isdigit():
+#             return int(user_input)
+#         print("Oops! That was not a valid number. Try again...")
+
+def get_user_input_number(message):
+    while True:
+        user_input = input(message)
+        try:
+            number = float(user_input)
+            return number
+        except ValueError:
+            print("Oops! That was not a valid number. Try again...")
+
+
+def get_user_input_string(message):
+    while True:
+        user_input = input(message)
+        if len(user_input) > 0:
+            return user_input
+        print("Oops! That was not an empty string. Try again...")
+
 
 def add_to_file():
     file = open("Salaries.csv", "a")
-    name = input("Enter a name: ")
-    salary = int(input("Enter salary: "))
+    name = get_user_input_string("Enter a new name: ")
+    salary = get_user_input_number("Enter salary: £ ")
     new_record = f"{name}, {str(salary)} \n"
     file.write(str(new_record))
     file.close()
@@ -49,14 +75,14 @@ def challenge_122():
             """
         )
 
-        selection = input("Enter the number of your selection: ")
-        if selection == "1":
+        user_choice = input("Enter the number of your selection: ")
+        if user_choice == "1":
             add_to_file()
-        elif selection == "2":
+        elif user_choice == "2":
             view_records()
-        elif selection == "3":
+        elif user_choice == "3":
             print("Exiting program...")
-            sys.exit()  # terminate program
+            sys.exit()
         else:
             print("Incorrect option, please try again: ")
 
