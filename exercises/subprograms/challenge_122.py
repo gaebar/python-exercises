@@ -5,36 +5,31 @@ Create the following menu:
 3) Quit program
 Enter the number of your selection:
 
-If the user selects 1, allow them to add to a file called Salaries.csv which will
-store their name and salary.
+If the user selects 1, allow them to add to a file called Salaries.csv which
+will store their name and salary.
 
-If they select 2 it should display all records in the
-Salaries.csv file.
+If they select 2 it should display all records in the Salaries.csv file.
 
-If they select 3 it should stop the program. If they select an incorrect option they
-should see an error message. They should keep returning to the menu until they select
-option 3.
+If they select 3 it should stop the program. If they select an incorrect option
+they should see an error message. They should keep returning to the menu until
+they select option 3.
 """
 
 import csv
 import sys
+import os.path
+import locale
 
-# import pandas as pd
+
+CSV_FILE_NAME = "Salaries.csv"
+FIELD_NAMES = ["name", "salary"]
 
 
-# def get_user_input_integer(message):
-#     while True:
-#         user_input = input(message)
-#         if user_input.isdigit():
-#             return int(user_input)
-#         print("Oops! That was not a valid number. Try again...")
-
-def get_user_input_number(message):
+def get_user_input_float(message):
     while True:
         user_input = input(message)
         try:
-            number = float(user_input)
-            return number
+            return float(user_input)
         except ValueError:
             print("Oops! That was not a valid number. Try again...")
 
@@ -48,23 +43,28 @@ def get_user_input_string(message):
 
 
 def add_to_file():
-    file = open("Salaries.csv", "a")
     name = get_user_input_string("Enter a new name: ")
-    salary = get_user_input_number("Enter salary: £ ")
-    new_record = f"{name}, {str(salary)} \n"
-    file.write(str(new_record))
-    file.close()
+    salary = get_user_input_float("Enter salary: £")
+
+    locale.setlocale(locale.LC_ALL, "en_GB")
+
+    # Using the locale built in library and CSV docwriter library.
+    # Format the salary number with the currency symbol and grouping the
+    # thousands.
+    with open(CSV_FILE_NAME, "w", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
+        writer.writerow({"name": name, "salary": locale.currency(salary, True, True)})
 
 
 def view_records():
-    file = open("Salaries.csv", "r")
-    for row in file:
-        print(row)
-    file.close()
+    print(FIELD_NAMES)
+    with open(CSV_FILE_NAME, newline="") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            print(row)
 
 
 def challenge_122():
-
     while True:
         print(
             """
