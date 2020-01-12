@@ -51,7 +51,7 @@ def add_to_file():
     # Using the locale built in library and CSV docwriter library.
     # Format the salary number with the currency symbol and grouping the
     # thousands.
-    with open(CSV_FILE_NAME, "w", newline="") as csvfile:
+    with open(CSV_FILE_NAME, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
         writer.writerow({"name": name, "salary": locale.currency(salary, True, True)})
 
@@ -60,8 +60,7 @@ def view_records():
     print(FIELD_NAMES)
     with open(CSV_FILE_NAME, newline="") as file:
         reader = csv.reader(file)
-        for row in reader:
-            print(row)
+        [print(row) for row in reader]
 
 
 def challenge_122():
