@@ -57,10 +57,20 @@ def add_to_file():
 
 
 def view_records():
-    print(FIELD_NAMES)
+    if not csv_file_exists():
+        return
+
     with open(CSV_FILE_NAME, newline="") as file:
         reader = csv.reader(file)
         [print(row) for row in reader]
+
+
+def csv_file_exists():
+    if os.path.exists(CSV_FILE_NAME):
+        return True
+
+    print("There are no records to display.")
+    return False
 
 
 def challenge_122():
