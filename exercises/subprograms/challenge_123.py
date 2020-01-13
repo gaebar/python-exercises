@@ -61,7 +61,7 @@ def add_to_file():
     # thousands.
     with open(CSV_FILE_NAME, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
-        writer.writerow({"name": name, "salary": locale.currency(salary, True, True)})
+        writer.writerow({FIELD_NAMES[0]: name, FIELD_NAMES[1]: locale.currency(salary, True, True)})
 
 
 def view_records():
