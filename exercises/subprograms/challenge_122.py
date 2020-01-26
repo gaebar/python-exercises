@@ -18,7 +18,6 @@ they select option 3.
 import csv
 import sys
 import os.path
-import locale
 
 
 CSV_FILE_NAME = "Salaries.csv"
@@ -46,14 +45,10 @@ def add_to_file():
     name = get_user_input_string("Enter a new name: ")
     salary = get_user_input_float("Enter salary: £")
 
-    locale.setlocale(locale.LC_ALL, "en_GB")
 
-    # Using the locale built in library and CSV docwriter library.
-    # Format the salary number with the currency symbol and grouping the
-    # thousands.
     with open(CSV_FILE_NAME, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
-        writer.writerow({"name": name, "salary": locale.currency(salary, True, True)})
+        writer.writerow({"name": name, "salary": salary})
 
 
 def view_records():
