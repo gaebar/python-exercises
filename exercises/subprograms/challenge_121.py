@@ -25,25 +25,28 @@ def get_user_input_integer(message):
 def get_user_input_string(message):
     while True:
         user_input = input(message)
-        if len(user_input) > 0:
+        if user_input:
             return user_input
-        print("Oops! That was not an empty string. Try again...")
+        print("Oops! That was an empty string. Try again...")
 
 
 def ask_for_option_within_list(names_list):
-    while True:
+    selected_index = 0
+
+    while not 0 < selected_index <= len(names_list):
+
         display_list(names_list)
         selected_index = get_user_input_integer(
             "Enter the number of the name you want to change: "
         )
-        if 0 < selected_index <= len(names_list):
-            return selected_index - 1
 
         print("Oops! Please select a number within the list. Try again...")
 
+    return selected_index - 1
+
 
 def handle_operations(names_list, operation):
-    if len(names_list) == 0:
+    if not names_list:
         print("The list is empty, you can't perform this operation")
         return
 
@@ -79,7 +82,7 @@ def delete_name(names_list, selected_index):
 
 
 def view_names(names_list):
-    if len(names_list) == 0:  # Check if list is empty
+    if not names_list:  # Check if list is empty
         print("The list is empty")
     else:
         display_list(names_list)
