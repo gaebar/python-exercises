@@ -17,7 +17,10 @@ import common_functions
 
 
 def ask_for_user_numbers():
-    while True:
+    num_low = 0
+    num_high = 0
+
+    while num_low >= num_high:
         num_low = common_functions.get_user_input_integer(
             "Please, enter the minimum number: "
         )
@@ -25,13 +28,11 @@ def ask_for_user_numbers():
             "Please, enter the maximum number: "
         )
 
-        if num_low < num_high:
-            comp_num = random.randrange(num_low, num_high)
-            return comp_num
-
         print(
             "Please ensure that the minimum number is smaller than the maximum number"
         )
+
+    return random.randrange(num_low, num_high)
 
 
 def prompt_for_guess():
