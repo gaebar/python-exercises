@@ -1,9 +1,9 @@
 """
 Define a subprogram that will ask the user to pick a low and a high number,
 and then generate a random number between those two values and store it in
-a variable called  “comp_num”.
+a variable called “comp_num”.
 
-Define another  subprogram that will  give the instruction “I am  thinking
+Define another subprogram that will give the instruction “I am thinking
 of a number…” and then ask the user to guess the number they are thinking of.
 
 Define a third subprogram that will check to see if the comp_num is the same
@@ -38,7 +38,7 @@ def ask_for_user_numbers():
 def prompt_for_guess():
     print("\nI am thinking of a number… ")
     guess = common_functions.get_user_input_integer(
-        "Please, enter the number I'm thinking of: "
+        "Please, enter the number I am thinking of: "
     )
     return guess
 
