@@ -30,17 +30,22 @@ def get_user_input_string(message):
         print("Oops! That was an empty string. Try again...")
 
 
+def check_index_within_list(list_to_check, index):
+    return not 0 < index <= len(list_to_check)
+
+
 def ask_for_option_within_list(names_list):
     selected_index = 0
 
-    while not 0 < selected_index <= len(names_list):
+    while check_index_within_list(names_list, selected_index):
 
         display_list(names_list)
         selected_index = get_user_input_integer(
             "Enter the number of the name you want to change: "
         )
 
-        print("Oops! Please select a number within the list. Try again...")
+        if check_index_within_list(names_list, selected_index):
+            print("Oops! Please select a number within the list. Try again...")
 
     return selected_index - 1
 
