@@ -44,7 +44,10 @@ def get_user_input_string(message):
 def add_to_file():
     name = get_user_input_string("Enter a new name: ")
     salary = get_user_input_float("Enter salary: £")
+    add_to_file_CSV_writer(name, salary, CSV_FILE_NAME, FIELD_NAMES)
 
+
+def add_to_file_CSV_writer(name, salary, CSV_FILE_NAME, FIELD_NAMES):
     with open(CSV_FILE_NAME, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
         writer.writerow({FIELD_NAMES[0]: name, FIELD_NAMES[1]: salary})
