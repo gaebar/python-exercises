@@ -18,6 +18,9 @@ Enter the number of your selection:
 import csv
 import sys
 import os.path
+import locale
+
+locale.setlocale(locale.LC_ALL, "en_GB")
 
 CSV_FILE_NAME = "Salaries.csv"
 FIELD_NAMES = ["name", "salary"]
@@ -29,6 +32,14 @@ def get_user_input_integer(message):
         if user_input.isdigit():
             return int(user_input)
         print("Oops! That was not a valid number. Try again...")
+
+
+def get_row_within_array(message, list):
+    while True:
+        user_index = get_user_input_integer(message)
+        if 0 < user_index <= len(list):
+            return user_index
+        print("Oops! That was not a valid row number. Try again...")
 
 
 def get_user_input_float(message):
@@ -51,7 +62,10 @@ def get_user_input_string(message):
 def add_to_file():
     name = get_user_input_string("Enter a new name: ")
     salary = get_user_input_float("Enter salary: £")
+    add_to_file_CSV_writer(name, salary, CSV_FILE_NAME, FIELD_NAMES)
 
+
+def add_to_file_CSV_writer(name, salary, CSV_FILE_NAME, FIELD_NAMES):
     with open(CSV_FILE_NAME, "a", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
         writer.writerow({FIELD_NAMES[0]: name, FIELD_NAMES[1]: salary})
@@ -62,8 +76,15 @@ def view_records():
         return
 
     with open(CSV_FILE_NAME, newline="") as file:
+        print("\nCurrent Records:")
         reader = csv.reader(file)
-        [print(row) for row in reader]
+
+        for row in reader:
+            salary = float(row[1])
+            print(f"{reader.line_num}) {row[0]}, {locale.currency(salary, True, True)}")
+
+        if reader.line_num == 0:
+            print("No records to display")
 
 
 def csv_file_exists():
@@ -80,17 +101,17 @@ def delete_record():
 
     temporary_list = []
 
+    view_records()
+
     with open(CSV_FILE_NAME, newline="") as file:
         reader = csv.DictReader(file, FIELD_NAMES)
         for num, row in enumerate(reader, 1):
-            print(f'{num} - {row["name"]} {row["salary"]}')
+            # print(f'{num} - {row["name"]} {row["salary"]}')
             temporary_list.append(row)
 
-    row_to_delete = get_user_input_integer("Enter the number of the row to delete: ")
-
-    if row_to_delete > len(temporary_list):
-        print("Number too high")
-        return
+    row_to_delete = get_row_within_array(
+        "Enter the number of the row to delete: ", temporary_list
+    )
 
     del temporary_list[row_to_delete - 1]
 
@@ -98,6 +119,8 @@ def delete_record():
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
         for row in temporary_list:
             writer.writerow({"name": row["name"], "salary": row["salary"]})
+
+    view_records()
 
 
 def challenge_123():
