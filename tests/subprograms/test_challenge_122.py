@@ -5,7 +5,7 @@ import random
 import os
 
 
-def test_challenge_122():
+def test_challenge_122_add():
     input_name = "Test Name"
     input_salary = "1000"
 
@@ -18,10 +18,8 @@ def test_challenge_122():
     )
 
     with open(test_csv_file_name, newline="") as file:
-        # Ensure the generated CSV file has only one line
-        assert len(file.readlines()) == 1
-
         reader = csv.reader(file)
         os.remove(test_csv_file_name)
         for row in reader:
             assert row == [input_name, input_salary]
+
