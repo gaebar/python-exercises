@@ -105,22 +105,24 @@ def delete_record():
 
     with open(CSV_FILE_NAME, newline="") as file:
         reader = csv.DictReader(file, FIELD_NAMES)
-        for num, row in enumerate(reader, 1):
-            # print(f'{num} - {row["name"]} {row["salary"]}')
+        for row in reader:
             temporary_list.append(row)
 
     row_to_delete = get_row_within_array(
         "Enter the number of the row to delete: ", temporary_list
     )
 
-    del temporary_list[row_to_delete - 1]
+    delete_record_dict_writer(temporary_list, row_to_delete, CSV_FILE_NAME)
 
+    view_records()
+
+
+def delete_record_dict_writer(temporary_list, row_to_delete, CSV_FILE_NAME):
+    del temporary_list[row_to_delete - 1]
     with open(CSV_FILE_NAME, "w", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=FIELD_NAMES)
         for row in temporary_list:
             writer.writerow({"name": row["name"], "salary": row["salary"]})
-
-    view_records()
 
 
 def challenge_123():
